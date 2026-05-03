@@ -21,12 +21,11 @@ With a growing focus on Machine & Deep Learning, Data Science, and Intelligent S
 
 ```python
 celine = {
-    "location"   : "Jeddah, Saudi Arabia 🇸🇦",
+    "location"   : "Jeddah, Saudi Arabia",
     "education"  : "BSc Computer Science (AI) @ Effat University",
-    "gpa"        : "3.95 / 4.0 — Dean's List 3 years running 🏆",
-    "languages"  : ["Arabic", "English", "French", "German"],
+    "gpa"        : "3.95 / 4.0 — Dean's List 3 years running",
     "interests"  : ["Agentic AI", "LLMs", "Deep Learning", "Smart Cities"],
-    "status"     : "Building AgentNation 🤖 | Open to opportunities ✨"
+    "status"     : "Building AgentNation | Open to internship opportunities"
 }
 ```
 
@@ -67,12 +66,12 @@ celine = {
 
 | Project | Description | Stack |
 |---|---|---|
-| [🚦 Semantic Multi-Agent Traffic System](https://github.com/CelineHarakee/edge-native-agentic-nlp) | AI-driven smart-city traffic coordination with NLP, RAG & LLM decision making | `Agentic AI` `LLM` `RAG` `NLP` |
-| [🕌 Hajj Companion AI](https://github.com/CelineHarakee/hajj-companion-ai) | Context-aware AI chatbot guiding pilgrims through Hajj & Umrah rituals | `Python` `LLM` `RAG` `Supabase` |
-| [🛡️ IoT Cyber Attack Detection](https://github.com/CelineHarakee/IoT-Cyber-Attack-Detection-Using-ML) | Real-time intrusion detection using RF, SVM, XGBoost, MLP & CNN | `Python` `ML` `IoT` |
-| [⚡ MyPLC: AI-Powered Powerline Monitor](https://github.com/CelineHarakee/MyPLC/tree/main) | Smart monitoring with AI-based threat detection & bandwidth optimization | `ML` `Software Eng` |
-| [⚽ Player Performance Analysis](https://github.com/CelineHarakee/Player-Performance-Analysis) | Predicts goal-scoring probability using Random Forest & player stats | `Data Science` `Python` `ML` |
-| [🌍 Music Map](https://github.com/CelineHarakee/MusicMap/tree/main) | Discover top songs by country + genre quizzes + PHP/SQL admin zone | `PHP` `JS` `HTML/CSS` `SQL` |
+| [Semantic Multi-Agent Traffic System](https://github.com/CelineHarakee/edge-native-agentic-nlp) | AI-driven smart-city traffic coordination with NLP, RAG & LLM decision making | `Agentic AI` `LLM` `RAG` `NLP` |
+| [Hajj Companion AI](https://github.com/CelineHarakee/hajj-companion-ai) | Context-aware AI chatbot guiding pilgrims through Hajj & Umrah rituals | `Python` `LLM` `RAG` `Supabase` |
+| [IoT Cyber Attack Detection](https://github.com/CelineHarakee/IoT-Cyber-Attack-Detection-Using-ML) | Real-time intrusion detection using RF, SVM, XGBoost, MLP & CNN | `Python` `ML` `IoT` |
+| [MyPLC: AI-Powered Powerline Monitor](https://github.com/CelineHarakee/MyPLC/tree/main) | Smart monitoring with AI-based threat detection & bandwidth optimization | `ML` `Software Eng` |
+| [Player Performance Analysis](https://github.com/CelineHarakee/Player-Performance-Analysis) | Predicts goal-scoring probability using Random Forest & player stats | `Data Science` `Python` `ML` |
+| [Music Map](https://github.com/CelineHarakee/MusicMap/tree/main) | Discover top songs by country + genre quizzes + PHP/SQL admin zone | `PHP` `JS` `HTML/CSS` `SQL` |
 
 ---
 
@@ -89,11 +88,11 @@ celine = {
 
 ## Achievements & Recognition
 
-- 🌿 **Dean's List** — Effat College of Engineering, 3 consecutive years (2022–2025)
-- 📄 **IEEE Conference Paper** — *AI-Powered Powerline Communication* — accepted & funded by DGSR
-- 🏅 **BMC Hackathon Finalist** — presented DermOra among 30 competing teams
-- 🤝 **Programming Club Co-leader** @ Effat University
-- 📚 **7 research papers** published on ResearchGate
+- **Dean's List** — Effat College of Engineering, 3 consecutive years (2022–2025)
+- **IEEE Conference Paper** — *AI-Powered Powerline Communication* — accepted & funded by DGSR
+- **BMC Hackathon Finalist** — presented DermOra among 30 competing teams
+- **Programming Club Co-leader** @ Effat University
+- **7 research papers** published on ResearchGate
 
 ---
 
