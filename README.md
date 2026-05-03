@@ -75,17 +75,6 @@ celine = {
 
 ---
 
-## GitHub Stats
-
-<div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=CelineHarakee&show_icons=true&theme=merko&hide_border=true&bg_color=0d1117&title_color=5DCAA5&icon_color=1D9E75&text_color=9FE1CB" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=CelineHarakee&layout=compact&theme=merko&hide_border=true&bg_color=0d1117&title_color=5DCAA5&text_color=9FE1CB" />
-
-</div>
-
----
-
 ## Achievements & Recognition
 
 - **Dean's List** — Effat College of Engineering, 3 consecutive years (2022–2025)
