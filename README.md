@@ -13,7 +13,7 @@
 
 ---
 
-## 👩‍💻 About Me
+## About Me
 
 I'm a **4th-year Computer Science undergraduate** at Effat University in Jeddah, Saudi Arabia, specializing in **Artificial Intelligence**.
 
@@ -68,7 +68,6 @@ celine = {
 | Project | Description | Stack |
 |---|---|---|
 | [🚦 Semantic Multi-Agent Traffic System](https://github.com/CelineHarakee/edge-native-agentic-nlp) | AI-driven smart-city traffic coordination with NLP, RAG & LLM decision making | `Agentic AI` `LLM` `RAG` `NLP` |
-| [🕌 Hajj Companion AI](https://github.com/CelineHarakee/hajj-companion-ai) | Context-aware AI chatbot guiding pilgrims through Hajj & Umrah rituals | `Python` `LLM` `RAG` `Supabase` |
 | [🛡️ IoT Cyber Attack Detection](https://github.com/CelineHarakee/IoT-Cyber-Attack-Detection-Using-ML) | Real-time intrusion detection using RF, SVM, XGBoost, MLP & CNN | `Python` `ML` `IoT` |
 | [⚡ MyPLC: AI-Powered Powerline Monitor](https://github.com/CelineHarakee/MyPLC/tree/main) | Smart monitoring with AI-based threat detection & bandwidth optimization | `ML` `Software Eng` |
 | [⚽ Player Performance Analysis](https://github.com/CelineHarakee/Player-Performance-Analysis) | Predicts goal-scoring probability using Random Forest & player stats | `Data Science` `Python` `ML` |
@@ -93,7 +92,7 @@ celine = {
 - 📄 **IEEE Conference Paper** — *AI-Powered Powerline Communication* — accepted & funded by DGSR
 - 🏅 **BMC Hackathon Finalist** — presented DermOra among 30 competing teams
 - 🤝 **Programming Club Co-leader** @ Effat University
-- 📚 **7 research papers** published on ResearchGate
+- 📚 **7 research papers** published 
 
 ---
 
