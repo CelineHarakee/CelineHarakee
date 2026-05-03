@@ -1,0 +1,342 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .hero { text-align: center; padding: 2.5rem 1.5rem 1.5rem; }
+  .avatar-ring {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: linear-gradient(135deg, #AFA9EC, #5DCAA5);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem; font-size: 30px;
+    border: 3px solid var(--color-border-tertiary);
+  }
+  .avatar-inner {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--color-background-primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  h1.name { font-size: 26px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .tagline { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 1rem; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 1.5rem; }
+  .badge {
+    font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500;
+  }
+  .badge-purple { background: #EEEDFE; color: #3C3489; }
+  .badge-teal { background: #E1F5EE; color: #085041; }
+  .badge-coral { background: #FAECE7; color: #712B13; }
+  .badge-amber { background: #FAEEDA; color: #633806; }
+  .badge-blue { background: #E6F1FB; color: #0C447C; }
+  .badge-pink { background: #FBEAF0; color: #72243E; }
+  .tabs { display: flex; gap: 0; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 1.5rem; overflow-x: auto; }
+  .tab {
+    padding: 8px 16px; font-size: 13px; cursor: pointer;
+    color: var(--color-text-secondary); border-bottom: 2px solid transparent;
+    white-space: nowrap; background: none; border-top: none; border-left: none; border-right: none;
+    font-family: var(--font-sans);
+  }
+  .tab.active { color: var(--color-text-primary); border-bottom: 2px solid #7F77DD; font-weight: 500; }
+  .tab:hover { color: var(--color-text-primary); }
+  .panel { display: none; padding: 0 0.5rem; }
+  .panel.active { display: block; }
+  .section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+  .stat-card {
+    background: var(--color-background-secondary); border-radius: 10px;
+    padding: 14px; text-align: center;
+  }
+  .stat-num { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
+  .stat-label { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+  .fact-list { list-style: none; }
+  .fact-list li {
+    padding: 10px 0; border-bottom: 0.5px solid var(--color-border-tertiary);
+    display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--color-text-primary);
+  }
+  .fact-list li:last-child { border-bottom: none; }
+  .fact-icon { font-size: 16px; min-width: 20px; text-align: center; }
+  .project-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 12px; padding: 14px 16px; margin-bottom: 10px;
+    cursor: pointer; transition: border-color 0.15s;
+  }
+  .project-card:hover { border-color: var(--color-border-secondary); }
+  .project-card h3 { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .project-card p { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+  .skill-bar-wrap { margin-bottom: 12px; }
+  .skill-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+  .skill-label span:first-child { color: var(--color-text-primary); }
+  .skill-label span:last-child { color: var(--color-text-secondary); font-size: 12px; }
+  .skill-track { background: var(--color-background-secondary); border-radius: 4px; height: 6px; overflow: hidden; }
+  .skill-fill { height: 100%; border-radius: 4px; width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+  .timeline-item { display: flex; gap: 12px; margin-bottom: 1rem; }
+  .timeline-dot-col { display: flex; flex-direction: column; align-items: center; }
+  .timeline-dot { width: 10px; height: 10px; border-radius: 50%; background: #7F77DD; margin-top: 4px; flex-shrink: 0; }
+  .timeline-line { flex: 1; width: 1px; background: var(--color-border-tertiary); margin-top: 4px; }
+  .timeline-content { flex: 1; padding-bottom: 8px; }
+  .timeline-content h3 { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .timeline-content .org { font-size: 12px; color: #534AB7; margin: 2px 0; }
+  .timeline-content .year { font-size: 11px; color: var(--color-text-secondary); }
+  .timeline-content p { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; line-height: 1.5; }
+  .fun-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .fun-card { background: var(--color-background-secondary); border-radius: 10px; padding: 14px; }
+  .fun-card .fun-title { font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .fun-card .fun-val { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .contact-row {
+    display: flex; align-items: center; gap: 12px; padding: 12px 0;
+    border-bottom: 0.5px solid var(--color-border-tertiary); text-decoration: none;
+    color: var(--color-text-primary);
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  .contact-label { font-size: 14px; font-weight: 500; }
+  .contact-sub { font-size: 12px; color: var(--color-text-secondary); }
+  .lang-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .lang-pill {
+    font-size: 12px; padding: 4px 12px; border-radius: 20px;
+    background: var(--color-background-secondary); color: var(--color-text-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+</style>
+
+<h2 class="sr-only">Celine Al Harake — Interactive about me page</h2>
+
+<div class="hero">
+  <div class="avatar-ring">
+    <div class="avatar-inner">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="16" r="7" fill="#AFA9EC"/>
+        <ellipse cx="22" cy="34" rx="12" ry="8" fill="#AFA9EC"/>
+      </svg>
+    </div>
+  </div>
+  <h1 class="name">Celine Al Harake</h1>
+  <p class="tagline">Beta version of a future innovator ⋆˙⟡ &nbsp;|&nbsp; Jeddah, Saudi Arabia</p>
+  <div class="badges">
+    <span class="badge badge-purple">AI Researcher</span>
+    <span class="badge badge-teal">CS @ Effat University</span>
+    <span class="badge badge-coral">IEEE Author</span>
+    <span class="badge badge-amber">Hackathon Finalist</span>
+    <span class="badge badge-blue">Dean's List 3x</span>
+    <span class="badge badge-pink">GPA 3.95</span>
+  </div>
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" onclick="showTab('overview')">Overview</button>
+  <button class="tab" onclick="showTab('projects')">Projects</button>
+  <button class="tab" onclick="showTab('skills')">Skills</button>
+  <button class="tab" onclick="showTab('journey')">Journey</button>
+  <button class="tab" onclick="showTab('fun')">Fun facts</button>
+  <button class="tab" onclick="showTab('contact')">Contact</button>
+</div>
+
+<div id="overview" class="panel active">
+  <div class="section-grid">
+    <div class="stat-card"><div class="stat-num">15+</div><div class="stat-label">Projects built</div></div>
+    <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Research papers</div></div>
+    <div class="stat-card"><div class="stat-num">40+</div><div class="stat-label">Books read</div></div>
+    <div class="stat-card"><div class="stat-num">3.95</div><div class="stat-label">Cumulative GPA</div></div>
+  </div>
+  <ul class="fact-list">
+    <li><span class="fact-icon">🎓</span>4th year Computer Science (AI specialization) at Effat University</li>
+    <li><span class="fact-icon">🤖</span>Passionate about Machine Learning, Deep Learning, and LLMs</li>
+    <li><span class="fact-icon">🔬</span>IEEE-accepted paper on AI-Powered Powerline Communication</li>
+    <li><span class="fact-icon">🏆</span>BMC Hackathon finalist — presented DermOra</li>
+    <li><span class="fact-icon">🌐</span>Speaks Arabic, English, French, and German</li>
+    <li><span class="fact-icon">🎵</span>Currently playing: Never Came Back by The Kid LAROI</li>
+    <li><span class="fact-icon">💼</span>AI agent builder — interned at Quantum building n8n-powered conversational agents</li>
+  </ul>
+</div>
+
+<div id="projects" class="panel">
+  <div id="project-list"></div>
+</div>
+
+<div id="skills" class="panel">
+  <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem;">Click a category to explore</p>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.2rem;" id="skill-cats">
+    <button class="badge badge-purple" style="cursor:pointer;border:none;" onclick="showSkills('ai')">AI & ML</button>
+    <button class="badge badge-teal" style="cursor:pointer;border:none;" onclick="showSkills('dev')">Programming</button>
+    <button class="badge badge-coral" style="cursor:pointer;border:none;" onclick="showSkills('tools')">Tools</button>
+  </div>
+  <div id="skill-bars"></div>
+</div>
+
+<div id="journey" class="panel">
+  <div class="timeline-item">
+    <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+    <div class="timeline-content">
+      <h3>Tech Coordinator Intern — Quantum</h3>
+      <div class="org">Quantum</div>
+      <div class="year">June 2025 – September 2025</div>
+      <p>Built AI conversational agents on n8n with RAG + prompt engineering. Designed scalable session management pipelines.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+    <div class="timeline-content">
+      <h3>Graduation project: AgentNation</h3>
+      <div class="org">Effat University</div>
+      <div class="year">2025 – 2026</div>
+      <p>Reimagining government policy decisions through agent-based AI systems modeling complex societal interactions.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+    <div class="timeline-content">
+      <h3>IEEE Conference Paper Accepted</h3>
+      <div class="org">AI-Powered Powerline Communication</div>
+      <div class="year">2024</div>
+      <p>Research on integrating AI into PLC networks for adaptive threat detection and performance optimization.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+    <div class="timeline-content">
+      <h3>Dean's List — 3 consecutive years</h3>
+      <div class="org">Effat College of Engineering</div>
+      <div class="year">2022–23, 2023–24, 2024–25</div>
+      <p>Maintained academic excellence while co-leading the Programming Club and authoring funded research.</p>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
+    <div class="timeline-content">
+      <h3>BSc Computer Science — Enrolled</h3>
+      <div class="org">Effat University, Jeddah</div>
+      <div class="year">2022 – 2026</div>
+      <p>AI specialization. Entered with a 3.99 GPA from Cedar International School after consistent honor roll.</p>
+    </div>
+  </div>
+</div>
+
+<div id="fun" class="panel">
+  <div class="fun-grid">
+    <div class="fun-card"><div class="fun-title">Birthday</div><div class="fun-val">December 8, 2004</div></div>
+    <div class="fun-card"><div class="fun-title">Currently based in</div><div class="fun-val">Jeddah, Saudi Arabia</div></div>
+    <div class="fun-card"><div class="fun-title">Books read</div><div class="fun-val">40+ and counting</div></div>
+    <div class="fun-card"><div class="fun-title">Volunteering</div><div class="fun-val">10+ completed</div></div>
+    <div class="fun-card" style="grid-column: span 2;"><div class="fun-title">Languages spoken</div><div class="lang-row"><span class="lang-pill">Arabic</span><span class="lang-pill">English</span><span class="lang-pill">French</span><span class="lang-pill">German</span></div></div>
+    <div class="fun-card" style="grid-column: span 2;"><div class="fun-title">Current song on repeat</div><div class="fun-val" style="margin-bottom:4px;">Never Came Back — The Kid LAROI</div><a href="https://open.spotify.com/track/1y8Cn036pPqrbkNJQVywuz" style="font-size:12px;color:#534AB7;">Open on Spotify</a></div>
+    <div class="fun-card"><div class="fun-title">GitHub achievement</div><div class="fun-val">YOLO badge</div></div>
+    <div class="fun-card"><div class="fun-title">Hackathon moment</div><div class="fun-val">BMC finalist — DermOra</div></div>
+  </div>
+</div>
+
+<div id="contact" class="panel">
+  <a class="contact-row" href="mailto:celine.harake04@gmail.com">
+    <div class="contact-icon" style="background:#EEEDFE;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="#534AB7"><path d="M1 3h14v10H1V3zm0 0l7 5 7-5"/><path d="M1 3l7 5 7-5" stroke="#534AB7" stroke-width="1.2" fill="none"/></svg>
+    </div>
+    <div><div class="contact-label">Email</div><div class="contact-sub">celine.harake04@gmail.com</div></div>
+  </a>
+  <a class="contact-row" href="https://github.com/CelineHarakee">
+    <div class="contact-icon" style="background:#E1F5EE;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="#085041"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    </div>
+    <div><div class="contact-label">GitHub</div><div class="contact-sub">github.com/CelineHarakee</div></div>
+  </a>
+  <a class="contact-row" href="https://www.linkedin.com/in/celine-al-harake-7710b1200/">
+    <div class="contact-icon" style="background:#E6F1FB;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="#185FA5"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+    </div>
+    <div><div class="contact-label">LinkedIn</div><div class="contact-sub">celine-al-harake</div></div>
+  </a>
+  <a class="contact-row" href="https://celineharakee.github.io/portfolio">
+    <div class="contact-icon" style="background:#FAECE7;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="#993C1D"><circle cx="8" cy="8" r="7" stroke="#993C1D" stroke-width="1.2" fill="none"/><path d="M8 1c-1.5 2-2.5 4.5-2.5 7s1 5 2.5 7M8 1c1.5 2 2.5 4.5 2.5 7S9.5 13 8 15M1 8h14" stroke="#993C1D" stroke-width="1.2" fill="none"/></svg>
+    </div>
+    <div><div class="contact-label">Portfolio</div><div class="contact-sub">celineharakee.github.io/portfolio</div></div>
+  </a>
+  <a class="contact-row" href="https://www.researchgate.net/profile/Celine-Al-Harake">
+    <div class="contact-icon" style="background:#EAF3DE;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="#3B6D11"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#3B6D11" stroke-width="1.2" fill="none"/><path d="M5 5h4M5 8h6M5 11h3" stroke="#3B6D11" stroke-width="1.2" stroke-linecap="round"/></svg>
+    </div>
+    <div><div class="contact-label">ResearchGate</div><div class="contact-sub">Celine-Al-Harake</div></div>
+  </a>
+</div>
+
+<script>
+const projects = [
+  { name: "Semantic Multi-Agent Traffic Coordination", desc: "AI-driven simulation for smart-city traffic using NLP, RAG, and LLM-based decision making.", tags: ["Agentic AI","LLM","RAG","NLP"], color: "badge-purple", url: "https://github.com/CelineHarakee/edge-native-agentic-nlp" },
+  { name: "AgentNation (Graduation)", desc: "Reimagining government policy decisions through agent-based AI systems.", tags: ["Agentic AI","LLM"], color: "badge-teal", url: "" },
+  { name: "Hajj Companion AI", desc: "AI chatbot guiding pilgrims through Hajj and Umrah with context-aware support.", tags: ["Python","LLM","RAG"], color: "badge-coral", url: "https://github.com/CelineHarakee/hajj-companion-ai" },
+  { name: "IoT Cyber Attack Detection", desc: "Intrusion detection for IoT using Random Forest, SVM, XGBoost, MLP, and CNN.", tags: ["Python","ML","IoT"], color: "badge-blue", url: "https://github.com/CelineHarakee/IoT-Cyber-Attack-Detection-Using-ML" },
+  { name: "Player Performance Analysis", desc: "Predicts football goal-scoring probability using Random Forest Regressor and Pandas.", tags: ["Data Science","ML"], color: "badge-amber", url: "https://github.com/CelineHarakee/Player-Performance-Analysis" },
+  { name: "Music Map", desc: "Discover top songs by country, with quizzes and a PHP/SQL admin zone.", tags: ["Web Dev","PHP","JS"], color: "badge-pink", url: "https://github.com/CelineHarakee/MusicMap/tree/main" },
+  { name: "Mini Country Network Simulation", desc: "Cisco Packet Tracer simulation with 5 VLANs, DHCP, ACLs, and ministry interconnects.", tags: ["Networking","Cisco"], color: "badge-purple", url: "https://github.com/CelineHarakee/Mini-Country-Network-Simulation" },
+];
+
+const skillData = {
+  ai: [
+    { name: "Machine Learning", pct: 95 },
+    { name: "Generative AI / LLMs / RAG", pct: 95 },
+    { name: "Data Analysis & Visualization", pct: 99 },
+    { name: "Deep Learning (TF/PyTorch)", pct: 85 },
+    { name: "NLP", pct: 80 },
+    { name: "Computer Vision", pct: 70 },
+  ],
+  dev: [
+    { name: "Python", pct: 95 },
+    { name: "Java", pct: 88 },
+    { name: "HTML / CSS / JS", pct: 85 },
+    { name: "C++", pct: 75 },
+    { name: "PHP", pct: 70 },
+    { name: "Swift", pct: 60 },
+  ],
+  tools: [
+    { name: "Git", pct: 92 },
+    { name: "SQL / MongoDB", pct: 88 },
+    { name: "n8n (workflow automation)", pct: 90 },
+    { name: "Docker", pct: 72 },
+    { name: "Linux / Bash", pct: 78 },
+    { name: "Cloud Platforms", pct: 68 },
+  ]
+};
+
+const fillColors = { ai: "#7F77DD", dev: "#1D9E75", tools: "#D85A30" };
+
+function showTab(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const tabs = document.querySelectorAll('.tab');
+  const order = ['overview','projects','skills','journey','fun','contact'];
+  tabs[order.indexOf(id)].classList.add('active');
+  if (id === 'projects') renderProjects();
+  if (id === 'skills') showSkills('ai');
+}
+
+function renderProjects() {
+  const el = document.getElementById('project-list');
+  if (el.children.length) return;
+  projects.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'project-card';
+    const tagHtml = p.tags.map(t => `<span class="badge ${p.color}" style="font-size:10px;padding:2px 8px;">${t}</span>`).join('');
+    div.innerHTML = `<h3>${p.name}</h3><p>${p.desc}</p><div class="project-tags">${tagHtml}</div>`;
+    if (p.url) div.onclick = () => window.open(p.url, '_blank');
+    el.appendChild(div);
+  });
+}
+
+function showSkills(cat) {
+  const el = document.getElementById('skill-bars');
+  el.innerHTML = '';
+  const color = fillColors[cat];
+  skillData[cat].forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'skill-bar-wrap';
+    div.innerHTML = `<div class="skill-label"><span>${s.name}</span><span>${s.pct}%</span></div><div class="skill-track"><div class="skill-fill" style="background:${color};" data-pct="${s.pct}"></div></div>`;
+    el.appendChild(div);
+  });
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      el.querySelectorAll('.skill-fill').forEach(f => { f.style.width = f.dataset.pct + '%'; });
+    });
+  });
+}
+
+showSkills('ai');
+</script>
